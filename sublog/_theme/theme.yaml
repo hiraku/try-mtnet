@@ -1,0 +1,141 @@
+id: "rimo"
+label: "rimo"
+version: "1.0.0"
+author_link: "https://kuroda-171221-syngram.movabletype.io/templation/"
+author_name: "テンプレート取り"
+description: "rimo"
+class: "blog"
+elements:
+  blog_static_files:
+    component: '~'
+    data:
+      - common
+    importer: blog_static_files
+  custom_fields:
+    component: commercial
+    data:
+      blog_entry_ogp_image:
+        default: ''
+        description: Open Graph Protocol のプロパティ og:image に設定する画像を設定できます。また、記事のサムネイル画像にも利用されます。
+        name: OGP イメージ
+        obj_type: post
+        options: ''
+        required: 0
+        type: asset_image
+      entry_recommend:
+        default: 0
+        description: サイドバーのオススメ記事に表示させる場合にチェックをいれます。
+        name: オススメ記事
+        obj_type: post
+        options: ''
+        required: 0
+        type: checkbox
+    importer: custom_fields
+  template_set:
+    component: core
+    data:
+      base_path: templates
+      templates:
+        archive:
+          author_entry_listing:
+            filename: author_entry_listing.mtml
+            label: 投稿者別記事リスト
+            mappings:
+              author:
+                archive_type: Author
+                file_template: "%a/%i"
+                preferred: 1
+          category_entry_listing:
+            filename: category_entry_listing.mtml
+            label: カテゴリ別記事リスト
+            mappings:
+              category:
+                archive_type: Category
+                file_template: "%-c/%i"
+                preferred: 1
+          monthly_entry_listing:
+            filename: monthly_entry_listing.mtml
+            label: 月別記事リスト
+            mappings:
+              monthly:
+                archive_type: Monthly
+                file_template: "%y/%m/%i"
+                preferred: 1
+        index:
+          feed_recent:
+            filename: atom.xml.mtml
+            label: 最新記事のフィード
+            outfile: atom.xml
+            rebuild_me: 1
+          index_css:
+            filename: common/css/styles.css.mtml
+            label: スタイルシート
+            outfile: common/css/styles.css
+            rebuild_me: 1
+          index_js:
+            filename: common/js/main.js.mtml
+            label: JavaScript
+            outfile: common/js/main.js
+            rebuild_me: 1
+          index_rsd:
+            filename: rsd.xml.mtml
+            label: RSD
+            outfile: rsd.xml
+            rebuild_me: 1
+          index_top_page:
+            filename: index.html.mtml
+            label: メインページ
+            outfile: index.html
+            rebuild_me: 1
+        individual:
+          entry:
+            filename: entry.mtml
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                file_template: "%-c/%-f"
+                preferred: 1
+        module:
+          module_entry_social_btn:
+            filename: module_entry_social_btn.mtml
+            label: 記事ソーシャルボタン（カウント付き）
+          module_follow:
+            filename: module_follow.mtml
+            label: フォローアクション
+          module_footer:
+            filename: module_footer.mtml
+            label: フッター
+          module_footer_social:
+            filename: module_footer_social.mtml
+            label: フッター（ソーシャルボタン）
+          module_google_analytics:
+            filename: module_google_analytics.mtml
+            label: Google アナリティクス
+          module_header:
+            filename: module_header.mtml
+            label: ヘッダー
+          module_list_entries:
+            filename: module_list_entries.mtml
+            label: 記事一覧
+          module_sidebar:
+            filename: module_sidebar.mtml
+            label: サイドバー
+          module_variables:
+            filename: module_variables.mtml
+            label: 共通変数
+        page:
+          page:
+            filename: page.mtml
+            label: ウェブページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: "%-c/%-f"
+                preferred: 1
+        system:
+          404_error:
+            filename: 404_error.mtml
+            label: 404 エラー
+    importer: template_set
+

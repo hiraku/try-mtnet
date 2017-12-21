@@ -1,0 +1,22 @@
+<header class="<$mt:Var name='header_class'$>">
+  <div class="inner clearfix">
+    <h1><a href="<$mt:BlogURL encode_html="1"$>"><img src="<$mt:BlogURL encode_html="1"$>common/images/logo.png" /></a></h1>
+    <span id="responsive-menu-button"></span>
+    <mt:If name="header_class" eq="top-header">
+      <h2><$mt:BlogDescription$></h2>
+    </mt:If>
+    <nav role="navigation" id="globalnavi">
+      <div id="navi-content">
+        <ul>  
+          <mt:TopLevelCategories>
+            <mt:If tag="CategoryCount">
+            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a>
+            <mt:Else>
+          </mt:If>
+          </mt:TopLevelCategories>
+          <mt:Pages sort_order="ascend"><li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li></mt:Pages>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

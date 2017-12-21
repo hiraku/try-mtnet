@@ -1,0 +1,37 @@
+<li>
+  <article>
+    <figure class="entry-image">
+      <a href="<$mt:EntryPermalink$>" class="image"><img src="<mt:If tag="CustomFieldValue" identifier="blog_entry_ogp_image"><mt:CustomFieldAsset identifier="blog_entry_ogp_image"><$mt:AssetThumbnailURL width="480"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="480"$><mt:Else><$mt:BlogRelativeURL$>common/images/noimage-448.png</mt:EntryAssets></mt:If>" alt=""></a>
+      <mt:EntryCategories type="primary"><a href="<$mt:CategoryArchiveLink$>" class="label category"><$mt:CategoryLabel escape="html"$></a></mt:EntryCategories>
+    </figure>
+    <div class="entry-detail clearfix">
+      <div class="entry-meta clearfix">
+        <div class="entry-author">
+          <figure>
+            <a href="<$mt:ArchiveLink archive_type='Author'$>">
+              <img src="<mt:If tag='AuthorUserpicURL' square="1"><$mt:AuthorUserpicURL$><mt:Else><$mt:BlogRelativeURL$>common/images/default-userpic-90.jpg</mt:If>" width="40px" alt="<$mt:EntryAuthorDisplayName escape='html'$>"></a>
+          </figure>
+          <p><a href="<$mt:ArchiveLink archive_type='Author'$>"><$mt:EntryAuthorDisplayName escape="html"$></a></p>
+        </div>
+        <div class="entry-date">
+          <time datetime="<$mt:EntryDate format_name='iso8601'$>"><$mt:EntryDate format="%x"$></time>
+        </div>
+      </div>
+      <div class="entry-title">
+        <a href="<$mt:EntryPermalink$>"><$mt:EntryTitle escape="html"$></a>
+      </div>
+    </div>
+  </article>
+</li>
+  <mt:EntriesFooter>
+  <nav class="page-navigation">
+      <ul class="page-navigation-list">
+      <mt:PaginationHasPrevious>
+      <li class="page-navigation-list-item page-navigation-prev"><a href="<$mt:PaginationPreviousURL$>" rel="prev">前の<$mt:GetVar name="entries_per_page"$>件</a></li>
+      </mt:PaginationHasPrevious>
+      <mt:PaginationHasNext>
+      <li class="page-navigation-list-item page-navigation-next"><a href="<$mt:PaginationNextURL$>" rel="next">次の<$mt:GetVar name="entries_per_page"$>件</a></li>
+      </mt:PaginationHasNext>
+    </ul>
+  </nav>
+  </mt:EntriesFooter>
