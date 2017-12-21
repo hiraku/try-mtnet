@@ -1,0 +1,18 @@
+<$mt:PageBody$>
+<$mt:PageMore$>
+<section class="pages-itemWrap">
+  <mt:SetVarBlock name="page_folder"><mt:PageFolder><$mt:FolderLabel encode_html="1"$></mt:PageFolder></mt:SetVarBlock>
+  <mt:IfFolder>
+    <mt:Pages sort_order="ascend" folder="$page_folder" field:catalog_pages="個別ページ">
+    <a class="pages-item" href="<$mt:PagePermalink$>">
+      <article>
+        <div class="pages-item__img" style="background-image: url(<mt:If tag="CustomFieldValue" identifier="page_thumbnail"><mt:CustomFieldAsset identifier="page_thumbnail"><$mt:AssetThumbnailURL$></mt:CustomFieldAsset><mt:Else><mt:PageAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL$><mt:Else><$mt:BlogRelativeURL$>images/noimage.png</mt:PageAssets></mt:If>)"></div>
+        <div class="pages-item__textWrap">
+           <h5 class="pages-item__title"><$mt:PageTitle encode_html="1"$></h5>
+           <p class="pages-item__text"><$mt:PageExcerpt words="120"$></p>
+        </div>
+      </article>
+    </a>
+    </mt:Pages>
+  </mt:IfFolder>
+</section>

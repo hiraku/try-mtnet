@@ -1,0 +1,83 @@
+<!DOCTYPE html><$mt:Include module="config" strip_linefeeds="1"$>
+<html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
+<head>
+<meta charset="<$mt:PublishCharset$>">
+<title>ニュース - 年別 | <$mt:BlogName encode_html="1"$></title>
+<meta name="description" content="<$mt:BlogDescription encode_html="1" remove_html="1"$>">
+<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
+<link rel="start" href="<$mt:BlogURL encode_html="1"$>">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:BlogURL encode_html="1"$>atom.xml">
+<$mt:CanonicalLink$>
+<!-- Open Graph Protocol -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
+<meta property="og:title" content="ニュース - 年別 | <$mt:BlogName encode_html="1"$>">
+<meta property="og:url" content="<$mt:BlogURL encode_html="1"$>news.html">
+<meta property="og:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@<$mt:Var name='twitterVia'$>">
+<meta name="twitter:title" content="ニュース - 年別 | <$mt:BlogName encode_html="1"$>">
+<meta name="twitter:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<!-- Microdata -->
+<meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<link itemprop="url" href="<$mt:BlogURL encode_html="1"$>news.html">
+<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<$mt:Include module="common_stylesheet"$>
+</head>
+<body>
+  <$mt:Include module="header"$>
+  <main class="UL-mainArea">
+    <section class="UL-header">
+      <div class="mt-container">
+        <div class="UL-header__titleWrap">
+        <h2 class="UL-header__title">ニュース一覧</h2>
+        </div>
+      </div>
+    </section>
+    
+    <div class="mt-container">
+      <ul class="entryList__ListWrap clearfix">
+        <mt:Archives archive_type="Individual">
+        <li><a href="<$mt:BlogURL$>news.html">最新順</a></li>
+        </mt:Archives>
+        <li>
+          <dl class="entryList__yearlyList">
+          <mt:ArchiveList archive_type="Yearly">
+            <mt:ArchiveListHeader>
+            <dt class="entryList__yearlyList--typetitle">年別</dt>
+            </mt:ArchiveListHeader>
+            <dd class="entryList__yearlyList--typecontents">
+              <a href="<$mt:ArchiveLink encode_html="1"$>"><$mt:ArchiveTitle$></a>
+            </dd>
+          </mt:ArchiveList>
+          </dl>
+        </li>
+        <li>
+          <dl class="entryList__categoryList">
+          <mt:ArchiveList archive_type="Category">
+            <mt:ArchiveListHeader>
+            <dt class="entryList__categoryList--typetitle">カテゴリ</dt>
+            </mt:ArchiveListHeader>
+            <dd class="entryList__categoryList--typecontents">
+              <a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a>
+            </dd>
+          </mt:ArchiveList>
+          </dl>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-container">
+      <h3 class="entryList__typeTitle">年別：<$mt:ArchiveTitle$></h3>
+    </div>
+  <$mt:Include module="entry-list"$>
+  </main>
+  <$mt:Include module="footer"$>
+  <$mt:Include module="common_bottom_js"$>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<section class="entryList">
+  <div class="mt-container">
+    <div class="entryList__cardWrap">
+      <mt:Entries sort_order="descend" paginate_by="$paginate">
+      <a href="<$mt:EntryPermalink$>" class="entryList__card">
+        <article class="clearfix">
+          <div class="entryList__img" style="background-image: url(<mt:If tag="CustomFieldValue" identifier="news_thumbnail"><mt:CustomFieldAsset identifier="news_thumbnail"><$mt:AssetThumbnailURL$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL$><mt:Else><$mt:BlogRelativeURL$>images/noimage.png</mt:EntryAssets></mt:If>)"></div>
+          <dl class="entryList__dataList">
+            <dt>
+              <h4 class="entryList__dataList--title"><$mt:EntryTitle encode_html="1"$></h4>
+            </dt>
+            <dd class="entryList__dataList--Date>
+              <time datetime="<$mt:EntryDate format="%Y-%m-%d"$>"><span class="year"><$mt:EntryDate format="%Y"$>年</span><span class="monthday"><$mt:EntryDate format="%b月%e日"$></span></time>
+              <mt:IfNonEmpty tag="CategoryLabel">
+                <mt:EntryCategories>
+                  <span class="entryList__dataList--category"><$mt:CategoryLabel encode_html="1"$></span>
+                </mt:EntryCategories>
+              </mt:IfNonEmpty>
+            </dd>
+            <dd class="entryList__dataList--text"><$mt:EntryExcerpt$></dd>
+          </dl>
+        </article>
+      </a>
+      <mt:EntriesFooter>
+    </div>
+  </div>
+</section>
+<section class="entry-navigation">
+  <div class="mt-container">
+    <nav>
+      <ul class="entry-navigation__list">
+        <mt:PaginationHasPrevious>
+        <li><a href="<$mt:PaginationPreviousURL$>" rel="prev" class="entry-navigation__list--prev">前の<$mt:GetVar name="paginate"$>件</a></li>
+        </mt:PaginationHasPrevious>
+        <mt:PaginationHasNext>
+        <li><a href="<$mt:PaginationNextURL$>" rel="next" class="entry-navigation__list--next">次の<$mt:GetVar name="paginate"$>件</a></li>
+        </mt:PaginationHasNext>
+      </ul>
+    </nav>
+  </div>
+</section>
+</mt:EntriesFooter>
+</mt:Entries>  

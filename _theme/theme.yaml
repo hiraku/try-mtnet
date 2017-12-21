@@ -1,0 +1,247 @@
+id: "tofu"
+label: "tofu"
+version: "1.0.0"
+author_link: "https://kuroda-171221-syngram.movabletype.io/"
+author_name: "黒田のテストサイト"
+description: "tofu"
+class: "blog"
+elements:
+  blog_static_files:
+    component: '~'
+    data:
+      - images
+      - js
+    importer: blog_static_files
+  custom_fields:
+    component: commercial
+    data:
+      banner_image01:
+        default: ''
+        description: "メインページにバナーエリアに表示させるバナー画像を指定します。\r\n３つまで表示できます。\r\n（合わせて、リンク先を指定します。）"
+        name: バナーエリア画像１
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      banner_image02:
+        default: ''
+        description: ''
+        name: バナーエリア画像２
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      banner_image03:
+        default: ''
+        description: ''
+        name: バナーエリア画像３
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      banner_url01:
+        default: ''
+        description: "メインページのバナーエリアにあるバナーのリンク先を指定します。\r\nhttp://から始まるURLを入力します。\r\n"
+        name: バナーエリアURL１
+        obj_type: blog
+        options: ''
+        required: 0
+        type: url
+      banner_url02:
+        default: ''
+        description: ''
+        name: バナーエリアURL２
+        obj_type: blog
+        options: ''
+        required: 0
+        type: url
+      banner_url03:
+        default: ''
+        description: ''
+        name: バナーエリアURL３
+        obj_type: blog
+        options: ''
+        required: 0
+        type: url
+      catalog_pages:
+        default: 個別ページ
+        description: "ページのスタイルを切り替えます。\r\n個別ページ：通常のページです。（デフォルト）\r\n一覧ページ：ページを一覧表示するスタイルです。\r\nフォルダ内のページのうち１つを「一覧ページ」に設定するとそのページを親に、他の「個別ページ」を子として、リンクつきのサムネイルを一覧で表示します。"
+        name: ページのスタイル
+        obj_type: page
+        options: 個別ページ,一覧ページ
+        required: 0
+        type: radio
+      navi_on:
+        default: 1
+        description: "ナビ、フッター部分にこのページへのリンクを表示させる場合はチェックを入れます。\r\n★一覧ページ内の子ページはチェックを外すと自然なつくりになります。"
+        name: ナビ・フッターに表示させる
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      news_oneline:
+        default: ''
+        description: メインページの１行ニュースエリアに表示する文章を入力します。入力がなければ記事タイトルを表示します。（45文字程度推奨。）
+        name: １行ニュースエリア
+        obj_type: post
+        options: ''
+        required: 0
+        type: text
+      news_thumbnail:
+        default: ''
+        description: ニュース一覧に使用するサムネイル画像を指定します。
+        name: サムネイル画像
+        obj_type: post
+        options: ''
+        required: 0
+        type: asset_image
+      page_thumbnail:
+        default: ''
+        description: ページ一覧などに使用するサムネイル画像を指定します。（W300px×H200px以上推奨。）
+        name: サムネイル画像
+        obj_type: page
+        options: ''
+        required: 0
+        type: asset_image
+      pickup:
+        default: 0
+        description: "メインページでピックアップエリアに表示する場合はチェックを入れます。\r\n（ピックアップはすべての記事の中で１つのみです。）"
+        name: ピックアップ記事
+        obj_type: post
+        options: ''
+        required: 0
+        type: checkbox
+      slide_images01:
+        default: ''
+        description: メインページのスライドに表示する画像を指定します。４つまで指定できます。\r\n（W913px×H400px・横長比率の画像推奨。）
+        name: スライド画像１
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      slide_images02:
+        default: ''
+        description: ''
+        name: スライド画像２
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      slide_images03:
+        default: ''
+        description: ''
+        name: スライド画像３
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      slide_images04:
+        default: ''
+        description: ''
+        name: スライド画像４
+        obj_type: blog
+        options: ''
+        required: 0
+        type: asset_image
+      toppage_link:
+        default: 0
+        description: "メインページにサムネイルを表示する場合はチェックを入れます。\r\nサムネイルには概要テキストエリアに入れた文言が表示され、なければページ内の文の冒頭が表示されます。\r\n画像は「サムネイル画像」から指定します。"
+        name: メインページにサムネイルを表示
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+    importer: custom_fields
+  template_set:
+    component: core
+    data:
+      base_path: templates
+      templates:
+        archive:
+          category_entry_listing:
+            filename: category_entry_listing.mtml
+            label: カテゴリ別記事リスト
+            mappings:
+              category:
+                archive_type: Category
+                file_template: "%-c/%i"
+                preferred: 1
+          yearly_entry_listing:
+            filename: yearly_entry_listing.mtml
+            label: 年別ブログ記事リスト
+            mappings:
+              yearly:
+                archive_type: Yearly
+                file_template: "%y/%i"
+                preferred: 1
+        index:
+          main_index:
+            filename: index.html.mtml
+            label: メインページ
+            outfile: index.html
+            rebuild_me: 1
+          news:
+            filename: news.html.mtml
+            label: ニュース TOP
+            outfile: news.html
+            rebuild_me: 1
+          styles:
+            filename: styles.css.mtml
+            label: スタイルシート
+            outfile: styles.css
+            rebuild_me: 1
+        individual:
+          entry:
+            filename: entry.mtml
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                file_template: "%y/%m/%-f"
+                preferred: 1
+        module:
+          catalog-pages:
+            filename: catalog-pages.mtml
+            label: catalog-pages
+          common_bottom_js:
+            filename: common_bottom_js.mtml
+            label: common_bottom_js
+          common_stylesheet:
+            filename: common_stylesheet.mtml
+            label: common_stylesheet
+          config:
+            filename: config.mtml
+            label: config
+          entry-list:
+            filename: entry-list.mtml
+            label: entry-list
+          footer:
+            filename: footer.mtml
+            label: footer
+          gototop:
+            filename: gototop.mtml
+            label: gototop
+          header:
+            filename: header.mtml
+            label: header
+          snsarea:
+            filename: snsarea.mtml
+            label: snsarea
+          social_button:
+            filename: social_button.mtml
+            label: social_button
+        page:
+          webpage:
+            filename: webpage.mtml
+            label: ウェブページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: "%-c/%-f"
+                preferred: 1
+        system:
+          404_error:
+            filename: 404_error.mtml
+            label: 404 エラー
+    importer: template_set
+

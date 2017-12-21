@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="mt-container clearfix">
+    <a href="<$mt:BlogRelativeURL$>" class="header__title">
+      <h1>
+        <img src="<$mt:BlogRelativeURL$>images/logo.png" alt="<$mt:BlogName$>">
+      </h1>
+    </a>
+    <div id="navToggle">
+      <div>
+       <span></span> <span></span> <span></span>
+      </div>
+    </div><!--#navToggle END-->
+    <nav class="header__navi">
+      <ul>
+        <li><a href="<$mt:BlogURL$>"><i class="fa fa-home" aria-hidden="true"></i>トップ</a></li>
+        <li><a href="<$mt:BlogURL$>news.html"><i class="fa fa-file-text" aria-hidden="true"></i>ニュース</a></li>
+        <mt:Pages field:navi_on="1" sort_order="ascend">
+          <li><a href=<$mt:PagePermalink$>><i class="fa fa-star" aria-hidden="true"></i><$mt:PageTitle encode_html=“1”$></a></li>
+        </mt:Pages>
+      </ul>
+    </nav>
+  </div>
+</header>

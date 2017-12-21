@@ -1,0 +1,1305 @@
+@charset "UTF-8";
+<$mt:Include module="config" strip_linefeeds="1"$>
+
+html body {
+  font-family: Helvetica, "FP-ヒラギノ丸ゴ StdN W2", YuGothic, "ヒラギノ角ゴ ProN W2", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  position: relative;
+  font-weight: normal;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  color: <$mt:GetVar name="textColor"$>;
+  font-size: 16px;
+  background-color: <$mt:GetVar name="bgColor"$>;
+  background-image: <$mt:GetVar name="bgImg"$>;
+}
+
+html body a {
+  color: <$mt:GetVar name="linkColor"$>;
+  -webkit-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+  html body a:hover {
+    opacity: <$mt:GetVar name="opacity"$>;
+  }
+html body p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.mt-container {
+  width: auto;
+  padding: 0 16px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.invisible {
+  display: none;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header {
+  width: 100%;
+  background-color: <$mt:GetVar name="mainColor"$>;
+  z-index: 100;
+  line-height: 0;
+  position: fixed;
+}
+ 
+.header, .header * {
+ transition: all 0.3s ease;
+ -webkit-transition: all 0.3s ease;
+ -moz-transition: all 0.3s ease;
+ -o-transition: all 0.3s ease;
+}
+  .header.fixed {
+    padding-top: 0px;
+    opacity: <$mt:GetVar name="opacity"$>;
+    top: 0;
+  }
+  
+.header .mt-container {
+  display: block;
+  padding: 12px 16px;
+}
+
+.header .header__title {
+  width: 50%;
+  display: block;
+}
+  
+.header h1 {
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+  .header .header__title img {
+    width: auto;
+    height: 40px;
+    padding: 0px;
+  }
+
+  .header .header__title img.fixed {
+    height: 40px;
+  }
+
+  .header .header__navi {
+    width: 77%;
+    margin-left: 20px;
+    line-height: 40px;
+    font-size: 0;
+  }
+
+  .header__navi li {
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    display: inline-table;
+  }
+    .header__navi li i {
+      margin-right: 4px;
+    }
+    .header__navi li a {
+      padding: 8px 16px;
+      text-decoration: none;
+      color: <$mt:GetVar name="whitetextColor"$>;
+    }
+    .header__navi li .current, .header__navi li a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+#navToggle {
+  display: none;
+  /*通常時は非表示*/
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#navToggle div {
+  position: relative;
+}
+
+#navToggle span {
+  display: run-inblock;
+  position: absolute;
+  /*#navToggle div に対して*/
+  width: 100%;
+  border-bottom: solid 3px <$mt:GetVar name="whitetextColor"$>;
+  -webkit-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#navToggle span:nth-child(1) {
+  top: 0;
+}
+
+#navToggle span:nth-child(2) {
+  top: 11px;
+}
+
+#navToggle span:nth-child(3) {
+  top: 22px;
+}
+
+@media screen and (max-width: 879px) {
+  .header .header__navi {
+    opacity: 0;
+    position: fixed;
+    overflow: hidden;
+    top: 12px;
+    right: -500px;
+    /*通常時はビュー外*/
+    width: 390px;
+    padding: 0 20px;
+    border-radius: 12px;
+    z-index: 999;
+    line-height: 0;
+    background-color: <$mt:GetVar name="pointColor"$>;
+    -webkit-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .header__navi li {
+    width: 200px;
+    line-height: 1em;
+    border-bottom: 2px dotted <$mt:GetVar name="whitetextColor"$>;
+    float: none;
+  }
+    .header__navi li:last-child {
+      border-bottom: none;
+    }
+    .header__navi li a {
+      padding: 20px 0px;
+      display: block;
+    }
+    .header__navi li .current, .header__navi li a:hover {
+      background-color: rgba(255, 255, 255, 0);
+    }
+  /* Toggle(Button) */
+  #navToggle {
+    z-index: 1000;
+    display: block; }
+  /* Click Toggle(Button) */
+  .openNav #navToggle span:nth-child(1) {
+    top: 11px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  .openNav #navToggle span:nth-child(2),
+  .openNav #navToggle span:nth-child(3) {
+    top: 11px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  /*header menu*/
+  .openNav .header__navi {
+    opacity: 1;
+    -webkit-transform: translateX(-300px);
+    transform: translateX(-300px); } 
+  }
+
+.slide {
+  margin-bottom: 16px;
+  position: relative;
+}
+  .slide .mt-container {
+    padding: 0px;
+  }
+
+.slide__displayArea img {
+  width: 100%;
+}
+
+.slide__displayArea .swiper-container-horizontal > .swiper-pagination-bullets {
+  margin: 0px;
+  bottom: 4px;
+}
+
+/*-------------------
+// メイン部分
+---------------------*/
+.mainArea {
+  padding: 0 0 40px 0;
+}
+
+.news {
+  margin-bottom: 16px;
+}
+  .news .newsWrap {
+    width: auto;
+    height: auto;
+    position: relative;
+    background-color: <$mt:GetVar name="mainColor02"$>;
+    border-radius: 12px;
+    padding: 12px;
+  }
+  
+  .news .news__title {
+    width: auto;
+    font-weight: bold;
+    color: <$mt:GetVar name="headerColor"$>;
+    font-size: 1.25em;
+    margin-bottom: -8px;
+    float: none;
+    text-align: center;
+  }
+    .news .news__title:before {
+      content: "<$mt:GetVar name="charmIcon"$>";
+      margin-right: 4px;
+      font-family: FontAwesome;
+      color: <$mt:GetVar name="subColor"$>;
+    }
+    .news .news__title:after {
+      content: "<$mt:GetVar name="charmIcon"$>";
+      margin-left: 4px;
+      font-family: FontAwesome;
+      color: <$mt:GetVar name="subColor"$>;
+    }
+      
+  .news .news__textWrap {
+    width: auto;
+    height: 36px;
+  }
+    .news .news__textWrap ul {
+      width: 100%;
+      position: relative;
+    }
+    .news .news__textWrap li {
+      width: 100%;
+      display: none;
+      font-size: 0.87em;
+    }
+            
+.articleWrap {
+  width: 100%;
+}
+  .articleWrap a {
+    text-decoration: none;
+    box-shadow: 5px 5px 0px 0px <$mt:GetVar name="shadowColor"$>;
+    background-color: #fff;
+  }
+
+.subareaWrap {
+  width: 100%;
+  position: relative;
+}
+
+.pickup {
+  background-color: <$mt:GetVar name="mainColor"$>;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 16px;
+  box-shadow: 5px 5px 0px 0px <$mt:GetVar name="shadowColor"$>;
+  padding: 8px 12px;
+}
+
+  .pickup .pickup__badge {
+    display: table;
+    position: absolute;
+    background-color: <$mt:GetVar name="pointColor"$>;
+    width: 80px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid <$mt:GetVar name="pointColor"$>;
+    top: -12px;
+    left: -16px;
+    transform: rotate(-25deg);
+    -moz-transform: rotate(-25deg);
+    -webkit-transform: rotate(-25deg);
+  }
+  .pickup .pickup__badge::after {
+    top: 96%;
+  	left: 50%;
+  	border: solid transparent;
+  	content: "";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: rgba(28, 133, 213, 0);
+  	border-top-color: <$mt:GetVar name="pointColor"$>;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+    
+  .pickup .pickup__badge--text {
+    color: <$mt:GetVar name="subColor"$>;
+    display: table-cell;
+    text-transform: capitalize;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+  }
+    
+  .pickup .pickup__title {
+    font-size: 1.18em;
+    color: <$mt:GetVar name="whitetextColor"$>;
+    font-weight: bold;
+    padding-left: 54px;
+    border-bottom: 2px dotted <$mt:GetVar name="whitetextColor"$>;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+    
+  .pickup .pickup__text {
+    font-size: 0.87em;
+    color: <$mt:GetVar name="whitetextColor"$>;
+    word-break: break-all;
+  }
+  
+.pageCardArea {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.pageCard {
+  width: 100%;
+  height: 240px;
+  border: 4px solid <$mt:GetVar name="mainColor02"$>;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+  .pageCard .pageCard__header {
+    max-width: 85%;
+    font-size: 1.17em;
+    padding: 4px 8px;
+    position: absolute;
+    z-index: 20;
+    top: 0px;
+    left: 0px;
+    border-bottom-right-radius: 8px;
+    font-weight: bold;
+    background-color: <$mt:GetVar name="mainColor02"$>;
+    color: <$mt:GetVar name="headerColor"$>;
+  }
+    
+  .pageCard .pageCard__wrap {
+    height: 240px;
+    position: relative;
+    z-index: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #fff;
+  }
+  
+  .pageCard .pageCard__category {
+    color: <$mt:GetVar name="pointColor"$>;
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    display: block; }
+    .pageCard .pageCard__category:before {
+      content: "<$mt:GetVar name="charmIcon"$>";
+      font-family: FontAwesome;
+    }
+    
+  .pageCard .pageCard__text {
+    width: 94.2%;
+    color: <$mt:GetVar name="textColor"$>;
+    font-size: 0.75em;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, <$mt:GetVar name="opacity"$>);
+    border-radius: 8px;
+    position: absolute;
+    margin: 8px;
+    word-break: break-all;
+    z-index: 3;
+    left: 0px;
+    bottom: 0px;
+  }
+
+.snsArea {
+  width: 272px;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  background-color: <$mt:GetVar name="mainColor02"$>;
+  background-image: url;
+  background-image: -webkit-linear-gradient(135deg, <$mt:GetVar name="mainColor02-light"$> 25%, <$mt:GetVar name="mainColor02"$> 25%, <$mt:GetVar name="mainColor02"$> 50%, <$mt:GetVar name="mainColor02-light"$> 50%, <$mt:GetVar name="mainColor02-light"$> 75%, <$mt:GetVar name="mainColor02"$> 75%, <$mt:GetVar name="mainColor02"$>);
+  background-image: linear-gradient(-45deg, <$mt:GetVar name="mainColor02-light"$> 25%, <$mt:GetVar name="mainColor02"$> 25%, <$mt:GetVar name="mainColor02"$> 50%, <$mt:GetVar name="mainColor02-light"$> 50%, <$mt:GetVar name="mainColor02-light"$> 75%, <$mt:GetVar name="mainColor02"$> 75%, <$mt:GetVar name="mainColor02"$>);
+  background-size: 20px 20px;
+  border: 4px solid <$mt:GetVar name="mainColor02"$>;
+}
+
+  .snsArea__facebook, .snsArea__twitter {
+    position: relative;
+  }
+  .snsArea__facebook {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px dotted <$mt:GetVar name="whitetextColor"$>;
+  }
+  
+  .snsArea .snsArea__title {
+    color: <$mt:GetVar name="headerColor"$>;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+    .snsArea .snsArea__title::before {
+      content: "<$mt:GetVar name="charmIcon"$>";
+      font-family: FontAwesome;
+      color: <$mt:GetVar name="subColor"$>;
+      margin-right: 4px;
+    }
+  
+  .snsArea .snsArea__icon {
+    width: 160px;
+    height: auto;
+    left: 132px;
+    position: absolute;
+    top: -28px;
+    right: 180px;
+    z-index: 2;
+  }
+
+.bannerArea {
+  width: 272px;
+  border-radius: 12px;
+  background-color: <$mt:GetVar name="subColor"$>;
+  border: 4px solid <$mt:GetVar name="subColor"$>;
+  padding: 20px 8px;
+  margin: 0 auto;
+}
+  
+  .bannerArea .bannerArea__item {
+    width: 100%;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+    .bannerArea .bannerArea__item:last-child {
+      margin-bottom: 0px;
+    }
+    .bannerArea .bannerArea__item img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 5px 5px 0px 0px <$mt:GetVar name="shadowColor"$>;
+    }
+
+.footer {
+  background-color: <$mt:GetVar name="mainColor"$>;
+  background-image: url;
+  background-image: -webkit-linear-gradient(135deg, <$mt:GetVar name="mainColor-light"$> 25%, <$mt:GetVar name="mainColor"$> 25%, <$mt:GetVar name="mainColor"$> 50%, <$mt:GetVar name="mainColor-light"$> 50%, <$mt:GetVar name="mainColor-light"$> 75%, <$mt:GetVar name="mainColor"$> 75%, <$mt:GetVar name="mainColor"$>);
+  background-image: linear-gradient(-45deg, <$mt:GetVar name="mainColor-light"$> 25%, <$mt:GetVar name="mainColor"$> 25%, <$mt:GetVar name="mainColor"$> 50%, <$mt:GetVar name="mainColor-light"$> 50%, <$mt:GetVar name="mainColor-light"$> 75%, <$mt:GetVar name="mainColor"$> 75%, <$mt:GetVar name="mainColor"$>);
+  background-size: 60px 60px;
+  padding: 20px 0;
+}
+  .footer a {
+    color: <$mt:GetVar name="whitetextColor"$>;
+  }
+
+.footer__logo {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+  .footer__logo img {
+    height: 40px;
+  }
+
+.footer__navi {
+  width: 100%;
+  font-size: 0.87em;
+  margin-top: 12px;
+  margin-right: 0px;
+  display: block;
+  float: none;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+  .footer__navi ul {
+    width: 50%;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  .footer__navi li {
+    padding: 4px 0;
+    margin: 0px 8px;
+  }
+
+.footer__snsWrap {
+  width: 100%;
+  float: none;
+  text-align: center;
+  font-size: 1.25em;
+}
+  .footer__snsWrap ul li {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .fb-share-button span {
+    height: 29px !important;
+  }
+  
+.copyright {
+  background-color: <$mt:GetVar name="bgColor"$>;
+}
+  
+  .copyright .copyright__text {
+    text-align: center;
+    font-size: 0.75em;
+    padding: 12px 0;
+  }
+
+.UL-header {
+  width: 100%;
+  min-height: 100px;
+  padding-top: 84px;
+  display: block;
+}
+ 
+  .UL-header .mt-container {
+    height: 100px;
+    position: relative;
+  }
+  .UL-header .mt-container:before {
+    width: 100%;
+    height: 100%;
+    content: "<$mt:GetVar name="charmIcon"$>";
+    font-family: FontAwesome;
+    font-size: 80px;
+    line-height: 100px;
+    color: <$mt:GetVar name="subColor"$>;
+    position: absolute;
+    text-align: center;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  .UL-header .UL-header__titleWrap {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    /* Safari用 */
+    transform: translateY(-50%);
+    position: relative;
+  }
+  
+  .UL-header .UL-header__title {
+    font-size: 1.5em;
+    line-height: 1.5;
+    font-weight: bold;
+    color: <$mt:GetVar name="headerColor"$>;
+    z-index: 20;
+    position: relative;
+  }
+
+  .UL-mainArea {
+    padding: 0 0 40px 0;
+  }
+
+/*-------------------
+記事一覧
+---------------------*/
+.entryList__typeTitle {
+  color: <$mt:GetVar name="headerColor"$>;
+  margin-bottom: 4px;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.entryList__typeTitle:before {
+  content: "<$mt:GetVar name="charmIcon"$>";
+  font-family: FontAwesome;
+  color: <$mt:GetVar name="subColor"$>;
+  margin-right: 4px;
+}
+
+.entryList__dataList--Date {
+  color: <$mt:GetVar name="pointColor"$>;
+  margin-bottom: 4px;
+}
+
+.entryList__ListWrap {
+  margin-bottom: 20px;
+}
+
+  .entryList__ListWrap li {
+    margin-right: 12px;
+    float: left;
+  }
+  
+  .entryList__categoryList .entryList__categoryList--typetitle, .entryList__yearlyList .entryList__yearlyList--typetitle {
+    margin-right: 4px;
+    float: left;
+  }
+  .entryList__categoryList .entryList__categoryList--typetitle:after, .entryList__yearlyList .entryList__yearlyList--typetitle:after {
+    content:"：";
+  }
+
+  .entryList__categoryList .entryList__categoryList--typecontents, .entryList__yearlyList .entryList__yearlyList--typecontents {
+    margin-right: 8px;
+    float: left;
+  }
+    .entryList__categoryList .entryList__categoryList--typecontents::after, .entryList__yearlyList .entryList__yearlyList--typecontents::after {
+      content: "/";
+    }
+    .entryList__categoryList .entryList__categoryList--typecontents:last-child, .entryList__yearlyList .entryList__yearlyList--typecontents:last-child {
+      margin-right: 0px;
+    }
+    .entryList__categoryList .entryList__categoryList--typecontents:last-child::after, .entryList__yearlyList .entryList__yearlyList--typecontents:last-child::after {
+      content: "";
+    }
+    
+  .entryList .entryList__cardWrap a {
+    color: <$mt:GetVar name="textColor"$>;
+    box-shadow: 5px 5px 0px 0px <$mt:GetVar name="shadowColor"$>;
+  }
+
+  .entryList .entryList__cardWrap .entryList__categoryTitle {
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 4px 8px 0px;
+    display: inline-block;
+    background: -webkit-linear-gradient(transparent 80%, <$mt:GetVar name="subColor02"$> 80%);
+    background: linear-gradient(transparent 80%, <$mt:GetVar name="subColor02"$> 80%);
+    margin: 0px 0px 20px;
+  }
+  .entryList .entryList__cardWrap .entryList__categoryTitle::before {
+    content: "<$mt:GetVar name="charmIcon"$>";
+    font-family: FontAwesome;
+    color: <$mt:GetVar name="mainColor"$>;
+    margin-right: 4px;
+  }
+
+.entryList__card {
+  border: 4px solid <$mt:GetVar name="mainColor02"$>;
+  background-color: <$mt:GetVar name="mainColor02"$>;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: block;
+}
+  
+  .entryList__card .entryList__img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #fff;
+  }
+    
+  .entryList__card .entryList__dataList {
+    margin: 8px 12px;
+  }
+    
+    .entryList__card .entryList__dataList .entryList__dataList--category {
+      font-size: 0.87em;
+      display: inline-block;
+      padding: 0px 8px;
+      border-radius: 4px;
+      background-color: <$mt:GetVar name="subColor"$>;
+    }
+      
+    .entryList__card .entryList__dataList .entryList__dataList--title {
+      font-size: 1.17em;
+      color: <$mt:GetVar name="whitetextColor"$>;
+      font-weight: bold;
+    }
+    .entryList__card .entryList__dataList .entryList__dataList--text {
+      font-size: 0.87em;
+    }
+      
+    .entry-navigation {
+      margin: 0 0 0px;
+    }
+      
+      .entry-navigation .entry-navigation__list {
+        text-align: center;
+      }
+        .entry-navigation .entry-navigation__list li {
+          display: inline-table;
+          margin: 0 12px;
+        }
+        
+        .entry-navigation .entry-navigation__list .entry-navigation__list--prev:before {
+          content: "\025c0";
+          font-size: 12px;
+        }
+        .entry-navigation .entry-navigation__list .entry-navigation__list--next:after {
+          content: "\025b6";
+          font-size: 12px;
+        }
+
+/*-------------------
+記事・ページ
+---------------------*/
+.pages .pages__category, .entry .entry__category {
+  color: <$mt:GetVar name="pointColor"$>;
+  margin-bottom: 4px;
+  margin-left: 0px;
+}
+  .entry .entry__category::before, .pages .pages__category::before  {
+    content: "<$mt:GetVar name="charmIcon"$>";
+    font-family: FontAwesome;
+    margin-right: 2px;
+    font-size: 0.85em;
+  }
+  .entry .entry__category .entry__category--categoryname:before {
+    content:"：";
+    margin: 0 2px;
+  }
+
+  .entry h3, .pages h3 {
+    font-size: 1.17em;
+    color: <$mt:GetVar name="headerColor"$>;
+    font-weight: bold;
+    background-color: <$mt:GetVar name="mainColor02"$>;
+    padding: 8px 16px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    border-radius: 12px;
+  }
+
+  .entry h4, .pages h4 {
+    font-size: 1.08em;
+    color: <$mt:GetVar name="headerColor"$>;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px dotted <$mt:GetVar name="mainColor02"$>;
+  }
+    .entry h4::before, .pages h4::before {
+      content: "<$mt:GetVar name="charmIcon"$>";
+      font-family: FontAwesome;
+      margin-right: 4px;
+      color: <$mt:GetVar name="subColor"$>;
+    }
+
+  .entry h5, .pages h5 {
+    font-size: 1.35em;
+    font-weight: bold;
+    border-bottom: 2px dotted <$mt:GetVar name="pointColor"$>;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .entry h6, .pages h6 {
+    font-size: 1.07em;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+    .entry h6:before, .pages h6:before {
+      content: "■";
+      margin-right: 4px;
+    }
+
+  .entry p, .pages p {
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    word-break: break-all;
+  }
+   
+  .entry blockquote, .pages blockquote {
+     width: 98%;
+     margin: 0 auto;
+     margin-bottom: 32px;
+     word-break: break-all;
+     border-left: 4px solid <$mt:GetVar name="mainColor"$>;
+     padding: 2px 0px 2px 8px;
+  }
+    
+  .entry img, .pages img {
+    display: block;
+    margin: 20px 0;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .entry ul, .pages ul {
+    width: auto;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    margin-left: 8px;
+  }
+  .entry ul li, .pages ul li {
+    list-style-type: disc;
+    margin-left: 1em;
+  }
+
+  .entry strong, .pages strong {
+    font-weight: bold;
+  }
+  
+  .entry figure figcaption, .pages figure figcaption {
+    margin-top: -12px;
+    font-size: 0.75em;
+  }
+  
+  figure.mt-figure-center figcaption {
+    text-align: center;
+  }
+
+/*-------------------
+  webページ・グッズ
+---------------------*/
+.pages-itemWrap {
+  margin: 0 auto;
+  width: auto;
+}
+
+.pages-item {
+  width: 280px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 24px;
+  border: 4px solid <$mt:GetVar name="mainColor02"$>;
+  background-color: <$mt:GetVar name="mainColor02"$>;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0px 0px <$mt:GetVar name="shadowColor"$>;
+  text-decoration: none;
+  color: <$mt:GetVar name="textColor"$>;
+  position: relative;
+}
+
+  .pages-item .pages-item__textWrap {
+    padding: 8px;
+    word-break: break-all;
+    margin: 0px;
+    z-index: 10;
+    left: 0px;
+  }
+    
+  .pages-item .pages-item__img {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #fff;
+  }
+    
+  .pages-item .pages-item__caption {
+    color: <$mt:GetVar name="pointColor"$>;
+    font-size: 0.75em;
+    margin-bottom: 4px;
+    background: <$mt:GetVar name="whitetextColor"$>;
+    border-radius: 8px;
+    padding: 2px 8px;
+  }
+    
+  .pages-item .pages-item__title {
+    display: block;
+    font-size: 1.25em;
+    color: <$mt:GetVar name="headerColor"$>;
+    border-bottom: <$mt:GetVar name="whitetextColor"$> dotted 2px;
+    margin-bottom: 8px;
+  }
+    .pages-item .pages-item__title::before {
+        content: "<$mt:GetVar name="charmIcon"$>";
+        font-family: FontAwesome;
+        color: <$mt:GetVar name="subColor"$>;
+        margin-right: 4px;
+    }
+    
+  .pages-item .pages-item__text {
+    width: 100%;
+    font-size: 0.75em;
+    margin: 0 0 32px;
+  }
+    
+/*snsbutton*/
+.social-button {
+  margin: 0 0 0px;
+  text-align: center;
+}
+  .social-button ul {
+    width: auto;
+    margin-bottom: 0px;
+  }
+    .social-button ul li {
+      display: inline-table;
+      margin-left: 0em;
+      margin-right: 8px;
+    }
+
+  .social-button .fb-like span {
+    height: 50px !important;
+  }
+
+/* gototop */
+.gototop a {
+  position: fixed;
+  display: block;
+  bottom: 40px;
+  right: 20px;
+  width: 80px;
+  height: 60px;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.gototop__arrow {
+  width: 52px;
+  height: 30px;
+  position: relative;
+  display: block;
+  left: 14px;
+  font-size: 1em;
+  bottom: -50px;
+  text-align: center;
+  line-height: 18px;
+  background-color: <$mt:GetVar name="pointColor"$>;
+  color: <$mt:GetVar name="whitetextColor"$>;
+  opacity: <$mt:GetVar name="opacity"$>;
+}
+
+  .gototop__arrow::before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    left: -14px;
+    box-sizing: border-box;
+    width: 80px;
+    height: 60px;
+    border: 40px solid transparent;
+    border-bottom: 30px solid <$mt:GetVar name="pointColor"$>;
+  }
+
+/*add style*/
+/*swiper*/
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+  .swiper-container .swiper-pagination-bullet-active {
+    opacity:1;
+    background: <$mt:GetVar name="pointColor"$>;
+  }
+
+/* min-width: 730px */
+@media screen and (min-width: 730px) {
+  .mt-container {
+    width: 670px;
+  }
+  
+  .header .header__title {
+    width: auto;
+  }
+    .header .header__title img {
+      height: 60px;
+    }
+  
+  .header__navi li a {
+    border-radius: 32px;
+  }
+  
+  .slide {
+    margin-bottom: 28px;
+  }
+    
+  .news {
+    margin-bottom: 40px;
+  }
+    .news .newsWrap {
+      height: 36px;
+    }
+    
+    .news .news__title {
+      float: left;
+      font-size: 1.5em;
+      line-height: 36px;
+      border-right: 2px dotted <$mt:GetVar name="textColor"$>;
+      text-align: left;
+      padding-right: 24px;
+      margin-bottom: 8px;
+      margin-right: 24px;
+    }
+      .news .news__title:after {
+        content: "";
+      }
+    
+    .pickup {
+      margin-bottom: 28px;
+    }
+      .pickup .pickup__title {
+        font-size: 1.5em;
+      }
+    
+    .pageCard {
+      margin-bottom: 28px;
+    }
+
+    .snsArea {
+      margin-bottom: 28px;
+    }
+    
+    .UL-header {
+      min-height: 160px;
+    }
+      .UL-header .mt-container {
+        height: 160px;
+      }
+        .UL-header .mt-container:before {
+          font-size: 100px;
+          line-height: 160px;
+        }
+    
+      .UL-header .UL-header__title {
+        font-size: 2.25em;
+      }
+  
+    .entryList__ListWrap {
+      margin-bottom: 40px;
+    }
+    
+    .entryList__typeTitle {
+      margin-bottom: 12px;
+    }
+    
+    .entryList__card {
+      margin-bottom: 32px;
+    }
+    
+      .entryList__card .entryList__img {
+        width: 26%;
+        float: left;
+      }
+      
+      .entryList__card .entryList__dataList {
+        width: 70%;
+        margin: 12px;
+        float: left;
+      }
+    
+      .entryList__card .entryList__dataList .entryList__dataList--title {
+        font-size: 1.5em;
+      }
+      
+    .entry h3, .pages h3 {
+      font-size: 1.75em;
+      margin-bottom: 24px;
+      padding: 8px 20px;
+    }
+      
+    .entry h4, .pages h4 {
+      font-size: 1.5em;
+    }
+      
+    .entry p, .pages p {
+      margin-bottom: 32px;
+      width: 90%;
+    }
+   
+    .entry blockquote, .pages blockquote {
+      width: 90%;
+      margin: 0 2em 32px 2em;
+      padding: 4px 0px 4px 16px;
+    }
+   
+    .entry ul, .pages ul {
+      width: 90%;
+      margin-left: 32px;
+    }
+
+  .pages-item {
+    margin: 0 8px;
+    margin-bottom: 40px;
+  }
+  
+  .pages-itemWrap {
+   display: -moz-flex;
+   display: -ms-flex;
+   display: -o-flex;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+  }
+  
+  .footer {
+    padding: 32px 0;
+  }
+  
+    .footer__navi ul {
+      margin-bottom: 32px;
+    }
+    .footer__logo img {
+      height: 80px;
+    }
+  
+  .gototop__arrow {
+    bottom: -30px;
+  }
+}
+  
+/* min-width: 880px */
+@media screen and (min-width: 880px) {
+  .mt-container {
+    width: 820px;
+  }
+    
+  .invisible {
+    height: auto;
+    display: block;
+  }
+  .invisible.is-open {
+    height: auto;
+  }
+      
+  .header .mt-container {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    
+  .slide__displayArea {
+    height: 320px;
+  }
+    .slide__displayArea .swiper-container-horizontal > .swiper-pagination-bullets {
+      bottom: 16px;
+    }
+      
+  .mainArea .mt-container {
+    padding: 0px;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+    
+  .news .newsWrap {
+    width: 100%;
+  }
+      
+  .articleWrap {
+    width: 630px;
+    margin-right: 20px;
+  }
+      
+  .subareaWrap {
+    width: 296px;
+  }
+    
+  .pageCardArea {
+    margin-bottom: 0;
+  }
+      
+  .pageCard {
+    width: 47.2%;
+  }
+    .pageCard:nth-child(odd) {
+      margin-right: 12px;
+    }
+    
+    .pageCard .pageCard__wrap {
+      max-height: 100%;
+      top: 0px;
+    }
+      
+    .pageCard .pageCard__text {
+      margin: 0;
+      border-radius: 0px;
+    }
+      
+  .snsArea {
+    width: 272px;
+  }
+    .snsArea .snsArea__icon {
+      right: 0px;
+    }
+        
+  .footer__logo {
+    width: 200px;
+    margin-right: 40px;
+    float: left;
+  }
+  
+  .footer__navi {
+    margin-top: 0;
+    width: 70%;
+  }
+  
+  .pages-itemWrap {
+    width: 82%;
+  }
+}
+
+/* min-width: 960px */
+@media screen and (min-width: 960px) {
+  .mt-container {
+    width: 913px;
+    padding: 0px 16px;
+  }
+        
+  .slide__displayArea {
+    height: 400px;
+  }
+    
+  .articleWrap {
+    margin-right: 36px;
+  }
+    
+  .pageCard {
+    width: 47.5%;
+  }
+    
+  .footer__navi {
+    width: 50%;
+    float: left;
+    margin-right: 20px;
+  }
+    .footer__navi ul {
+      margin-bottom: 0px;
+    }
+    
+  .footer__snsWrap {
+    width: auto;
+    float: left;
+    text-align: left;
+  }
+    
+  .pages-itemWrap {
+    width: 100%;
+  }
+}
+
+/*ticker*/
+.ticker {
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+  .ticker ul li {
+    display: none;
+    height: 36px;
+    line-height: 36px;
+  }

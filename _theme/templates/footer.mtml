@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="mt-container clearfix">
+    <div class="footer__logo">
+      <a href="<$mt:BlogRelativeURL$>">
+        <img src="<$mt:BlogRelativeURL$>images/logo.png" alt="<$mt:BlogName$>">
+      </a>
+    </div>
+    <div class="footer__navi">
+      <ul>
+        <li><a href="<$mt:BlogURL$>"><i class="fa fa-home" aria-hidden="true"></i>トップ</a></li>
+        <li><a href="<$mt:BlogURL$>news.html"><i class="fa fa-file-text" aria-hidden="true"></i>ニュース</a></li>
+        <mt:Pages limit="2" field:navi_on="1">
+          <li><a href=<$mt:PagePermalink$>><i class="fa fa-star" aria-hidden="true"></i><$mt:PageTitle encode_html=“1”$></a></li>
+        </mt:Pages>
+      </ul>
+      <ul>
+        <mt:Pages field:navi_on="1" offset="2">
+          <li><a href=<$mt:PagePermalink$>><i class="fa fa-star" aria-hidden="true"></i><$mt:PageTitle encode_html=“1”$></a></li>
+        </mt:Pages>
+      </ul>
+    </div>
+      
+    <div class="footer__snsWrap clearfix">
+      <ul class="footer-sns__wrap">
+      <mt:If name="socialButtonFacebook"><li><a href="<$mt:GetVar name="facebook"$>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li></mt:If>
+      <mt:If name="socialButtonTwitter"><li><a href="<$mt:GetVar name="twitter"$>" target="_blank"><i class="fa fa-twitter"></i></a></li></mt:If>
+      </ul>
+    </div>
+  </div>
+</footer>
+<section class="copyright">
+  <div class="mt-container">
+    <p class="copyright__text">&copy;<$mt:GetVar name="copyright"$></p>
+  </div>
+</section>

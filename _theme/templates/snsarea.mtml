@@ -1,0 +1,20 @@
+<div class="snsArea">
+  <mt:If name="snsAreaFacebook">
+  <section class="snsArea__facebook">
+    <h2 class="snsArea__title">facebook</h2>
+    <mt:If name="snsAreaIcon">
+    <img src="<$mt:BlogRelativeURL$>images/sns_icon.png" alt="「フォロー」してね！！" class="snsArea__icon">
+    </mt:If>
+    <div class="fb-page" data-href="https://www.facebook.com/<$mt:GetVar name="fbAppId"$>" data-tabs="timeline" data-width="270" data-height="500" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/<$mt:GetVar name="fbAppId"$>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<$mt:GetVar name="fbAppId"$>">トフ</a></blockquote></div>
+  </section>
+  </mt:If>
+  <mt:If name="snsAreaTwitter">
+  <section class="snsArea__twitter">
+    <h2 class="snsArea__title">twitter</h2>
+    <mt:If name="snsAreaIcon">
+    <img src="<$mt:BlogRelativeURL$>images/sns_icon.png" alt="「フォロー」してね！！" class="snsArea__icon">
+    </mt:If>
+    <a class="twitter-timeline" data-width="270" data-height="500" data-theme="light" href="https://twitter.com/<$mt:GetVar name="twitterVia"$>">Tweets by <$mt:GetVar name="twitterVia"$></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </section>
+  </mt:If>
+</div>

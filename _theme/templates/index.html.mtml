@@ -1,0 +1,165 @@
+<!DOCTYPE html><$mt:Include module="config" strip_linefeeds="1"$>
+<html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
+<head>
+<meta charset="<$mt:PublishCharset$>">
+<title><$mt:BlogName encode_html="1"$></title>
+<meta name="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
+<link rel="start" href="<$mt:BlogURL encode_html="1"$>">
+<$mt:CanonicalLink$>
+<!-- Open Graph Protocol -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
+<meta property="og:title" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:url" content="<$mt:BlogURL encode_html="1"$>">
+<meta property="og:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@<$mt:Var name='twitterVia'$>">
+<meta name="twitter:title" content="<$mt:BlogName encode_html="1"$>">
+<meta name="twitter:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<!-- Microdata -->
+<meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+<link itemprop="url" href="<$mt:BlogURL encode_html="1"$>">
+<link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.jpg">
+<$mt:Include module="common_stylesheet"$>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<$mt:Include module="header"$>
+  <main class="mainArea">
+    <section class="slide">
+      <div class="mt-container slide__displayArea">
+        <!-- Swiper -->
+        <div class="swiper-container">
+        <mt:SetVarBlock name="slidecount"><$mt:CustomFieldValue identifier="slide_images01"$><$mt:CustomFieldValue identifier="slide_images02"$><$mt:CustomFieldValue identifier="slide_images03"$><$mt:CustomFieldValue identifier="slide_images04"$></mt:SetVarBlock>
+        <mt:If name="slidecount">
+          <div class="swiper-wrapper">
+            <mt:CustomFieldAsset identifier="slide_images01">
+            <div class="swiper-slide">
+              <img src="<$mt:AssetURL$>">
+            </div>
+          </mt:CustomFieldAsset>
+            <mt:CustomFieldAsset identifier="slide_images02">
+            <div class="swiper-slide">
+              <img src="<$mt:AssetURL$>">
+            </div>
+          </mt:CustomFieldAsset>
+            <mt:CustomFieldAsset identifier="slide_images03">
+            <div class="swiper-slide">
+              <img src="<$mt:AssetURL$>">
+            </div>
+          </mt:CustomFieldAsset>
+            <mt:CustomFieldAsset identifier="slide_images04">
+            <div class="swiper-slide">
+              <img src="<$mt:AssetURL$>">
+            </div>
+          </mt:CustomFieldAsset>
+          </div>
+          <div class="swiper-pagination"></div>
+          <mt:Else>
+          <img src="<$mt:BlogRelativeURL$>images/main_slide.jpg">
+          </mt:If>
+        </div>
+        <!-- /Swiper -->
+      </div>
+    </section>
+    <mt:If name="tickerNum">
+    <section class="news">
+      <div class="mt-container clearfix">
+        <div class="newsWrap clearfix">
+          <h2 class="news__title">ニュース</h2>
+          <div class="ticker" rel="slide">
+            <ul class="news__textWrap">
+              <!-- NewsSwiper -->
+              <mt:Entries lastn="$tickerNum">
+              <li class="swiper-slide">
+                <a href="<$mt:EntryPermalink$>">
+                  <mt:If tag="CustomFieldValue" identifier="news_oneline"><$mt:CustomFieldValue identifier="news_oneline"$><mt:Else><$mt:EntryTitle encode_html="1" words="45"$></mt:If>
+                </a>
+              </li>
+              </mt:Entries>
+            </ul>
+          </div>
+        </div>
+      </div>  
+    </section>
+    </mt:If>
+    <section class="contentsWrap">
+      <div class="mt-container clearfix">
+        <section class="articleWrap">
+        <!-- pickup記事 -->
+        <mt:Entries limit="1" field:pickup="1">
+          <a href="<$mt:PagePermalink$>">
+            <article class="pickup clearfix">
+              <div class="pickup__badge"><p class="pickup__badge--text">pick up!</p></div>
+              <h3 class="pickup__title"><$mt:EntryTitle encode_html="1"$></h3>
+              <p class="pickup__text">
+                <$mt:PageExcerpt words="73"$>
+              </p>
+            </article>
+          </a>
+        </mt:Entries>
+          <div class="pageCardArea">
+            <mt:Pages sort_order="ascend" field:toppage_link="1">
+            <a href="<$mt:PagePermalink$>" class="pageCard">
+              <article class="pageCard__wrap" style="background-image: url(<mt:If tag="CustomFieldValue" identifier="page_thumbnail"><mt:CustomFieldAsset identifier="page_thumbnail"><$mt:AssetThumbnailURL$></mt:CustomFieldAsset><mt:Else><mt:PageAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL$><mt:Else><$mt:BlogRelativeURL$>images/noimage.png</mt:PageAssets></mt:If>)";>
+                <h3 class="pageCard__header"><$mt:PageTitle encode_html="1"$></h3>
+                <p class="pageCard__text">
+                  <$mt:PageExcerpt words="40"$>
+                </p>
+              </article>
+            </a>
+            </mt:Pages>
+          </div>
+        </section>
+        <section class="subareaWrap">
+          <mt:If name="snsArea">
+          <$mt:Include module="snsarea"$>
+          </mt:If>
+          <!-- bannerArea -->
+          <mt:SetVarBlock name="bannerCount"><$mt:CustomFieldValue identifier="banner_image01"$><$mt:CustomFieldValue identifier="banner_image02"$><$mt:CustomFieldValue identifier="banner_image03"$><$mt:CustomFieldValue identifier="banner_image04"$></mt:SetVarBlock>
+          <mt:If name="bannerCount">
+          <div class="bannerArea">
+            <ul class="bannerArea__item">
+              <mt:CustomFieldAsset identifier="banner_image01">
+                <li>
+                  <a href="<$mt:CustomFieldValue identifier="banner_url01"$>" target="_blank"><img src="<$mt:AssetURL$>" alt="<$mt:AssetLabel encode_html="1"$>"></a>
+                </li>
+              </mt:CustomFieldAsset>
+              <mt:CustomFieldAsset identifier="banner_image02">
+                <li>
+                  <a href="<$mt:CustomFieldValue identifier="banner_url02"$>" target="_blank"><img src="<$mt:AssetURL$>" alt="<$mt:AssetLabel encode_html="1"$>"></a>
+                </li>
+              </mt:CustomFieldAsset>
+              <mt:CustomFieldAsset identifier="banner_image03">
+                <li>
+                  <a href="<$mt:CustomFieldValue identifier="banner_url03"$>" target="_blank"><img src="<$mt:AssetURL$>" alt="<$mt:AssetLabel encode_html="1"$>"></a>
+                </li>
+              </mt:CustomFieldAsset>
+            </ul>
+          </div>
+          </mt:If>
+        </section>
+      </div>
+    </section>
+  </main>
+<$mt:Include module="gototop"$>
+<$mt:Include module="footer"$>
+<$mt:Include module="common_bottom_js"$>
+<script src="<$mt:BlogRelativeURL$>js/index.js"></script>
+</body>
+</html>
