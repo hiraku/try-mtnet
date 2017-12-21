@@ -157,4 +157,91 @@ elements:
     data:
       base_path: templates
       templates:
+        archive:
+          category_entry_listing:
+            filename: category_entry_listing.mtml
+            label: カテゴリ別記事リスト
+            mappings:
+              category:
+                archive_type: Category
+                file_template: "%-c/%i"
+                preferred: 1
+          yearly_entry_listing:
+            filename: yearly_entry_listing.mtml
+            label: 年別ブログ記事リスト
+            mappings:
+              yearly:
+                archive_type: Yearly
+                file_template: "%y/%i"
+                preferred: 1
+        index:
+          main_index:
+            filename: index.html.mtml
+            label: メインページ
+            outfile: index.html
+            rebuild_me: 1
+          news:
+            filename: news.html.mtml
+            label: ニュース TOP
+            outfile: news.html
+            rebuild_me: 1
+          styles:
+            filename: styles.css.mtml
+            label: スタイルシート
+            outfile: styles.css
+            rebuild_me: 1
+        individual:
+          entry:
+            filename: entry.mtml
+            label: 記事
+            mappings:
+              individual:
+                archive_type: Individual
+                file_template: "%y/%m/%-f"
+                preferred: 1
+        module:
+          catalog-pages:
+            filename: catalog-pages.mtml
+            label: catalog-pages
+          common_bottom_js:
+            filename: common_bottom_js.mtml
+            label: common_bottom_js
+          common_stylesheet:
+            filename: common_stylesheet.mtml
+            label: common_stylesheet
+          config:
+            filename: config.mtml
+            label: config
+          entry-list:
+            filename: entry-list.mtml
+            label: entry-list
+          footer:
+            filename: footer.mtml
+            label: footer
+          gototop:
+            filename: gototop.mtml
+            label: gototop
+          header:
+            filename: header.mtml
+            label: header
+          snsarea:
+            filename: snsarea.mtml
+            label: snsarea
+          social_button:
+            filename: social_button.mtml
+            label: social_button
+        page:
+          webpage:
+            filename: webpage.mtml
+            label: ウェブページ
+            mappings:
+              page:
+                archive_type: Page
+                file_template: "%-c/%-f"
+                preferred: 1
+        system:
+          404_error:
+            filename: 404_error.mtml
+            label: 404 エラー
     importer: template_set
+
